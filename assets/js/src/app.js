@@ -15,7 +15,6 @@ var app = function() {
         fullscreenWidget();
         fullscreenMode();
 
-
     });
 
     var toggleSettings = function() {
@@ -412,7 +411,6 @@ var app = function() {
     };
 
 
-
     //return functions
     return {
         dateRangePicker: dateRangePicker,
@@ -425,12 +423,11 @@ var app = function() {
         formWizard: formWizard,
         weather: weather,
         spinStart: spinStart,
-        spinStop: spinStop
+        spinStop: spinStop,
     };
 }();
 
 
 $(window).resize(function() {
     app.chartJs();
-
 });

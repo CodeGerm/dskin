@@ -4338,3 +4338,26 @@ div.config h4 a:hover {
 .config-swatch-wrap .options .theme-style-wrapper:hover {
   cursor: pointer;
 }
+
+#icontent {
+  padding: 0px;
+  border: 0px;
+  width:1100px;
+  height:600px;
+}
+.toolbarimg{
+  margin:2px auto 0 auto;
+}
+.toolbardiv{
+  border: 0px solid #0088cc;
+  text-align:center
+}
+.mytd{
+  border: 0px solid #0088cc;
+  text-align: center;
+}
+.mytd:hover{
+  border: 0px solid #0088cc;
+  background-color: #d9edf7;
+  text-align: center;
+}
