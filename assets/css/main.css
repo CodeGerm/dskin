@@ -804,7 +804,7 @@ canvas {
   position: relative;
 }
 .main-content-wrapper #main-content {
-  padding: 15px 15px 0 15px;
+  padding: 0px 3px 0 3px;
   width: 100%;
 }
 .main-content-wrapper #main-content .h1 {
@@ -822,7 +822,7 @@ canvas {
   margin-right: 240px;
 }
 .pageheader {
-  padding: 15px;
+  padding: 5px;
   border-bottom: 1px solid #dce0e6;
   border-top: 1px solid #eee;
   background: #F6F8F8;
@@ -4348,6 +4348,9 @@ div.config h4 a:hover {
 .toolbarimg{
   margin:2px auto 0 auto;
 }
+.toolbarimg:hover{
+  cursor:pointer;
+}
 .toolbardiv{
   border: 0px solid #0088cc;
   text-align:center
@@ -4360,4 +4363,33 @@ div.config h4 a:hover {
   border: 0px solid #0088cc;
   background-color: #d9edf7;
   text-align: center;
+}
+.pentaho-tab-bar{
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  float:left;
+}
+.pentaho-tab{
+  width:150px;
+  text-align: center;
+  margin:3px 3px 0px 3px;
+  padding: 3px 3px 0px 3px;
+  font-size: 10pt;
+  display:inline;
+}
+.pentaho-tab:hover{
+  cursor: pointer;
+}
+.pentaho-tab-selected{
+  width:150px;
+  text-align: center;
+  background-color: white;
+  margin: 3px 3px 0px 3px;
+  padding: 3px 3px 0px 3px;
+  font-size: 10pt;
+  display:inline;
+}
+.pentaho-tab-selected:hover{
+  cursor: pointer;
 }

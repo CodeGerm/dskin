@@ -72,6 +72,29 @@
             for (var i=0;i<mylinkdom.length;i++) {
                 mylinkdom[i].onclick=mylinkclick;
             }
+            var toolbarimgdom=document.getElementsByClassName("toolbarimg");
+            for (var i=0;i<toolbarimgdom.length;i++) {
+                toolbarimgdom[i].onclick=toolbarimgclick;
+            }
+            //initialize pentahoitems
+            $(".pentaho-tab-bar").on("click",".pentaho-tab-select",function(){
+
+            });
+            $(".pentaho-tab-bar").on("click",".pentaho-tab",function(){
+                $(".pentaho-tab-bar .pentaho-tab-selected").removeClass("pentaho-tab-selected").addClass("pentaho-tab");
+                $(this).removeClass("pentaho-tab").addClass("pentaho-tab-selected");
+                //find the idx of this tab
+                var selecttabidx=$(this).closest(".pentaho-tab-selected").index();
+                $("#icontent").attr("src",pentahoitemsurl[0][selecttabidx]);
+            });
+            pentahoitems[0]=new Array();
+            pentahoitems[0][0]="New Dashboard";
+            pentahoitems[1]=new Array();
+            pentahoitems[1][0]="Analytics";
+            pentahoitems[2]=new Array();
+            pentahoitems[2][0]="Report";
+            pentahoitemsurl[0]=new Array();
+            pentahoitemsurl[0][0]="http://localhost:8080/pentaho/api/repos/dashboards/editor?ts=1433132584269";
         }
         function mylinkclick(){
             //alert("yo");
@@ -81,6 +104,41 @@
             $(this).parent().addClass("active");
             $("#mypageheader h1:first").text(this.title);
             return false;
+        }
+        function createnewpentahoview(type){
+            switch (type){
+                case "Dashboard":
+                    var dashname="New Dashboard";
+                    var dashurl="http://localhost:8080/pentaho/api/repos/dashboards/editor?ts=1";
+                    pentahoitems[0].push(dashname);
+                    pentahoitemsurl[0].push(dashurl);
+                    $(".pentaho-tab-selected").removeClass("pentaho-tab-selected").addClass("pentaho-tab");
+                    var pentahobardiv=$(".pentaho-tab-bar");
+                    $("<div class='pentaho-tab-selected'>New Dashboard</div>").appendTo(pentahobardiv);
+                case "Analytics":
+                case "Report":
+                default:
+            }
+        }
+
+        function toolbarimgclick(){
+            var nameidx=this.src.lastIndexOf("/");
+            var toolbarname=this.src.substr(nameidx+1,this.src.length);
+            switch (toolbarname){
+                case "open.png":
+                    //open a file
+                case "new.png":
+                    //new a file
+                    var titlestr=$("#mypageheader h1:first").text();
+                    createnewpentahoview(titlestr);
+                case "edit.png":
+                    //edit
+                case "save.png":
+                    //save
+                case "saveas.png":
+                    //save as
+                default :
+            }
         }
     </script>
     <section id="main-wrapper" class="theme-default">
@@ -538,12 +596,12 @@
         <section class="main-content-wrapper">
             <div class="pageheader" id="mypageheader">
                 <h1>Dashboard</h1>
-                <table cellspacing="10px" cellpadding="0px" style="height:40px;width:100%;text-align:center;">
+                <table cellspacing="0px" cellpadding="0px" style="border:0px;margin:0px;padding:0px;height:15px;width:100%;text-align:center;">
                     <tbody>
                     <tr>
                         <td>
                             <div class="toobardiv" title="Open">
-                                <table cellspacing="3px" cellpadding="3px" style="text-align:center">
+                                <table cellspacing="0px" cellpadding="0px" style="text-align:center">
                                     <tbody>
                                     <tr>
                                         <td class="mytd"><img class="toolbarimg" src="assets/img/pentaho/toolbar/open.png"></td>
@@ -610,6 +668,9 @@
                 -->
             </div>
             <section id="main-content" class="animated fadeInUp">
+                <div class="pentaho-tab-bar">
+                    <div class="pentaho-tab-selected">New Dashboard</div>
+                </div>
                 <!-- here we should replace the main content with an iframe-->
                 <iframe src="http://localhost:8080/pentaho/api/repos/dashboards/editor?ts=1433132584269" name="icontentname" id="icontent" width="1100px" height="600px"></iframe>
             </section>

@@ -148,3 +148,9 @@ function make_base_auth(user, password) {
     var hash = Base64.encode(tok);
     return "Basic " + hash;
 }
+
+var pentahoitems=new Array(3);
+//pentahoitems[0]: Dashboard
+//pentahoitems[1]: Analytics report
+//pentahoitems[2]: Report
+var pentahoitemsurl=new Array(3);
